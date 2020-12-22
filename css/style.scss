@@ -11,6 +11,7 @@
   // Accent
   --call-to-action-gradient1: hsl(176, 68%, 64%); /* Cyan  (inside call-to-action gradient) */
   --call-to-action-gradient2: hsl(198, 60%, 50%); /* Blue  (inside call-to-action gradient) */
+  --main-btn-linear-gradient: linear-gradient(to right, hsl(176, 68%, 64%), hsl(198, 60%, 50%));
   --error: hsl(0, 100%, 63%); /*Light Red */
   // Neutral
   --White: hsl(0, 0%, 100%);
@@ -30,10 +31,21 @@ input,
 button {
   outline: none;
 }
+%container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  background-color: var(--mainBG);
+  color: var(--White);
 }
+
+p {
+  line-height: 1.3rem;
+}
+
 h1,
 h2,
 h3,
@@ -42,4 +54,251 @@ button,
 input[type="submit"],
 nav {
   font-family: "Raleway", sans-serif;
+}
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--intro-emailBG);
+  @extend %container;
+  .nav__link {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:not(:last-of-type) {
+      margin-right: 2rem;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .nav__link:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+    .brand__logo {
+      object-fit: cover;
+      max-width: 100px;
+      max-height: 42px;
+    }
+  }
+}
+
+header.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("../images/bg-curvy-desktop.svg"), var(--intro-emailBG);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding-bottom: 6rem;
+  @extend %container;
+  .intro__img {
+    max-width: 600px;
+  }
+  .intro__main__heading {
+    max-width: 30ch;
+  }
+  .intro__subtitle {
+    max-width: 55ch;
+    line-height: 1.3rem;
+  }
+  @media screen and (max-width: 800px) {
+    background: url("../images/bg-curvy-mobile.svg"), var(--intro-emailBG);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+    .intro__main__heading {
+      font-size: 1.7rem;
+    }
+    .intro__main__heading,
+    .intro__subtitle {
+      max-width: 80%;
+    }
+    .intro__img {
+      max-width: 300px;
+    }
+  }
+}
+%verticle-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  text-align: center;
+  justify-items: center;
+  grid-gap: 3rem;
+  @extend %container;
+  @extend %verticle-padding;
+  .feature__wrapper {
+    max-width: 20rem;
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.motivation {
+  display: flex;
+  @extend %verticle-padding;
+  @extend %container;
+  * {
+    flex: 1;
+  }
+  .motivation__img {
+    width: 100%;
+  }
+  .motivation__intro__wrapper {
+    margin-left: 3rem;
+    margin-top: 4rem;
+    h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      max-width: 24rem;
+    }
+  }
+  .how__works_link__wrapper {
+    padding-bottom: 0.2rem;
+    display: inline-block;
+    border-bottom: 1px solid var(--call-to-action-gradient1);
+    color: var(--call-to-action-gradient1);
+    &:hover {
+      border-bottom: none;
+      color: var(--White);
+    }
+    &:hover g + circle {
+      fill: var(--White) !important;
+    }
+  }
+  .how__works_link {
+    text-decoration: none;
+    font-size: 1rem;
+    color: inherit;
+  }
+
+  @media screen and (max-width: 1000px) {
+    & {
+      flex-direction: column;
+      .motivation__intro__wrapper {
+        margin-left: 0rem;
+      }
+    }
+  }
+}
+
+.testimonials {
+  display: flex;
+  justify-content: space-between;
+  background: url("../images/bg-quotes.png") no-repeat;
+  background-position: left 5vw top;
+  padding-top: 2rem;
+  @extend %container;
+  .testimonial {
+    width: 360px;
+    padding: 1.5rem;
+    border-radius: 0.3rem;
+    background: var(--testimonialsBG);
+  }
+  q {
+    line-height: 1.4rem;
+  }
+  .user__wrapper {
+    display: flex;
+    margin-top: 1rem;
+  }
+  .user__img {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+  }
+  .user__info {
+    margin-left: 1rem;
+  }
+  p {
+    margin: 0px;
+  }
+  @media screen and (max-width: 1028px) {
+    flex-direction: column;
+    .testimonial:not(:last-of-type) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.email__area {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--intro-emailBG);
+  margin: 0 25vw;
+  text-align: center;
+  position: relative;
+  top: 120px;
+  .email__input {
+    padding: 0.6rem 2rem;
+    border-radius: 34px;
+    border: none;
+  }
+  @media screen and (max-width: 1000px) {
+    margin: 0 5vw;
+    top: 160px;
+    .email__input {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+footer {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: var(--footerBG);
+  padding-top: 160px;
+  padding-bottom: 8rem;
+  @extend %container;
+  header {
+    grid-column: 1/-1;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .phone__icon,
+  .email__icon {
+    margin-right: 1rem;
+  }
+  .social__icons {
+    display: flex;
+  }
+  .social__icon {
+    cursor: pointer;
+    border: 1px solid var(--White);
+    color: var(--White);
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    @extend %center;
+    &:hover {
+      background-color: var(--White);
+      color: var(--call-to-action-gradient1);
+    }
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+  }
+  @media screen and (max-width: 1027px) {
+    grid-template-columns: 1fr;
+    padding-top: 220px;
+  }
 }

@@ -1,0 +1,12 @@
+.main-btn {
+  cursor: pointer;
+  border-radius: 34px;
+  padding: 0.6rem 2rem;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  background: var(--main-btn-linear-gradient);
+  &:hover {
+    background: var(--call-to-action-gradient1);
+  }
+}
